@@ -31,9 +31,11 @@ public class SimpleList
 	 * @param add the integer to add to the list
 	 */
 	public void add(int add) {
-		if(count == 10) {
-			list[9] = 0;
-			count = count - 1;
+		if(count == list.length) {
+			int increase = count / 2;
+			int[] newArray = new int[list.length + increase];
+			System.arraycopy(list, 0, newArray, 0, list.length);
+			list = newArray;
 		}
 		
 		//for loop to move every element to the right.
