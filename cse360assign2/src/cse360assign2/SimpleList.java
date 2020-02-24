@@ -26,8 +26,7 @@ public class SimpleList
 	/**
 	 * This method is to add an integer "add" to the front of 
 	 * the array "list".
-	 * This method also deletes the last element if there
-	 * are already 10 elements in the array.
+	 * If the list is filled up, the list expands by 50%.
 	 * @param add the integer to add to the list
 	 */
 	public void add(int add) {
@@ -53,11 +52,14 @@ public class SimpleList
 	 * This method is used to remove an integer from the 
 	 * array. 
 	 * This method will delete duplicates of any integer entered.
+	 * If the resulting list has more than 25% empty spaces,
+	 * then the list is reduced. 
 	 * @param remove the integer(s) to remove from list
 	 */
 	public void remove(int remove) {
 		//boolean "found" is used to indicate whether or not the
 		//integer was found.
+		int currentTracker = (int) (list.length * 0.75);
 		boolean found = false;
 		for(int index = 0; index < count; index++) {
 			if(list[index] == remove) {
@@ -74,6 +76,12 @@ public class SimpleList
 				count = count - 1;
 			}
 			found = false;
+		}
+		
+		if(count <= currentTracker && count > 1) {
+			int[] newArray = new int[(int)(list.length * 0.75)];
+			System.arraycopy(list, 0, newArray, 0, newArray.length);
+			list = newArray;
 		}
 	}
 	
@@ -126,5 +134,59 @@ public class SimpleList
 		}
 		return position;
 	}
+	
+	/**
+	 * This method is used to append a number to the
+	 * list. This means that an entered integer
+	 * will be added at the end of the list. 
+	 * @param appendNum is the number to be appended
+	 */
+	public void append(int appendNum) {
+		if(count == list.length) {
+			int increase = count / 2;
+			int[] newArray = new int[list.length + increase];
+			System.arraycopy(list, 0, newArray, 0, list.length);
+			list = newArray;
+		}
+		
+		list[count] = appendNum;
+		count++;
+	}
+	
+	/**
+	 * This method is used to return the 
+	 * first element of the list.
+	 * @return the first element of the list.
+	 * @return -1 if there are no elements in the list.
+	 */
+	public int first() {
+		if(count == 0) {
+			return -1;
+		}
+		
+		return list[0];
+	}
+	
+	/**
+	 * This method returns the last element of the array.
+	 * @return the last element of the current list
+	 * @return -1 if there are no elements in the list
+	 */
+	public int last() {
+		int last = 0;
+		if(count == 0) {
+			return -1;
+		}
+		return list[count - 1];
+	}
+	/**
+	 * this method returns the size of the current list.
+	 * @return list.length the number of elements in the list.
+	 */
+	public int size() {
+		return list.length;
+	}
+	
+	//things to do for tomorrow: fix the delete method. it's not working rn.
+	
 }
-
