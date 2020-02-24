@@ -186,7 +186,6 @@ public class SimpleList
 	public int size() {
 		return list.length;
 	}
-	
 	//things to do for tomorrow: fix the delete method. it's not working rn.
 	
 }
