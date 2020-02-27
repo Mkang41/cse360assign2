@@ -71,7 +71,6 @@ public class SimpleList
 				//remove integer to the left.
 				for(int track = index; track < count - 1; track++) {
 					list[track] = list[track + 1];
-					index--;
 				}
 				count = count - 1;
 			}
@@ -79,7 +78,7 @@ public class SimpleList
 		}
 		
 		if(count <= currentTracker && count > 1) {
-			int[] newArray = new int[(int)(list.length * 0.75)];
+			int[] newArray = new int[currentTracker];
 			System.arraycopy(list, 0, newArray, 0, newArray.length);
 			list = newArray;
 		}
@@ -185,7 +184,5 @@ public class SimpleList
 	 */
 	public int size() {
 		return list.length;
-	}
-	//things to do for tomorrow: fix the delete method. it's not working rn.
-	
+	}	
 }
