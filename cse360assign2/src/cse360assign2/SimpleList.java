@@ -1,8 +1,10 @@
 package cse360assign2;
 /**
  * This java file contains the code for the program SimpleList.
- * This program has the methods to add, delete, count, and 
- * search specific elements in the array list.
+ * This program has the methods to add, delete, count, search,
+ * append, last, first, and size specific elements in the 
+ * array list.
+ * Github Link: https://github.com/Mkang41/cse360assign2
  * @author Moses Kang
  * @classID 392
  * @Assignment 2
